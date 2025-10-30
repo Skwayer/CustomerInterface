@@ -1,0 +1,86 @@
+Part 1
+    UML Diagram (Complete) - Draw.io
+        -methods (constructors)
+        -fields
+        -return types
+        -parameter types
+        -access level
+        -relationships (inheritance/aggregation)
+
+    Java implementation of the classes
+
+////////////////////////////////////////////////
+
+Customer class
+    private Id
+    private password
+    private security question
+    private security answer
+    private address
+    private ccNumber
+
+    setters/getters
+
+    Logout system
+            customer selects logout
+                system logs out
+
+///////////////////////////////////
+
+Customer Login class // This should be a utility class, an abstract static function class
+    Login system
+        Id, password, security question
+            Display a welcome message
+        failure to login
+            Id no match
+                System terminates
+            Id match, password no match
+                Prompt the user again. max of 3 attempts
+                    Continue to security question
+                Failure
+                    Terminate system
+            Id match, password match, bad security question
+                System terminates
+
+///////////////////////////////////////////////////////////
+
+Create Customer class // Once Customer is made then you create an ArrayList of the objects
+    Enter desired ID
+        If available
+            Enter desired password - min 6 chars, at least 1 digit, 1 uppercase, 1 special char
+                If invalid password
+                    Continue prompting until valid password is entered
+        If not available
+            Continue requesting until a valid ID is accepted
+                If accepted
+                    prompt - name, address, CC#
+                    If valid
+                        Display welcome message
+                        Display list of security question options
+                        Collect answer to question after selected
+                        Store question and answer in Customer class fields
+                    If any of these are NULL
+                        prompt for all three until accepted
+
+///////////////////////////////////////////////
+
+Shopping Cart class // Unrelated to anything but can be created by a Customer object
+    Opening a new cart calls the shopping catalog for display - names, descriptions, normal price, sale price
+    Customer adds desired items to the cart - including quantities
+        Customer can also refuse to add any items which will result in an empty cart
+    Display items in the cart - quantities, taxes, total price
+
+    Place order
+        Delivery methods - $3.00 for delivery or free for in store pickup
+            Possible to cancel order at this stage
+        Display order again considering delivery method
+        Call for customer CC#, then send request to appropriate bank
+        If valid, system receives a four digit confirmation code from bank
+            If bank denies the purchase
+                User is prompted to enter a new CC#
+                    If new CC# is accepted
+                        Update customer information to include this new CC#
+                Also, can exit
+        The system stores the customer order, containing the order date, customer ID, product name, quantity,
+        total, and authorization number.
+        Display order confirmation to customer
